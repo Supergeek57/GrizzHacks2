@@ -20,13 +20,17 @@ backward1=pygame.image.load("backward1.png")
 # obstacle=pygame.image.load("pizzamonster.png")
 target = pygame.image.load('table3.png')
 astroid = pygame.image.load('astroid.png')
+person=pygame.image.load('backward1.png')
 
 
 # Build Character
 def character(x,y):
   direction = forward1
   direction = pygame.transform.scale(direction, (200, 200))
+  direction2 = backward1
+  direction2=pygame.transform.scale(direction2,(200,200))
   window.blit(direction, (x,y))
+  window.blit(direction2,(personx,persony))
 
     
     
@@ -49,6 +53,8 @@ destx=300
 desty=25
 dest2x=25
 dest2y=100
+personx=200
+persony=10
 pizzaToDeliver=10
 oldPizza=10
 tips=0.00
@@ -76,6 +82,8 @@ def background():
 
   # Astroid
   window.blit(astroid, (astx,asty))
+  #Person
+  
 
 def collisiontesthorizontal(x,astx):
     if x>astx+60 and x<astx+100:
@@ -108,17 +116,17 @@ while run:
 
   if 1==1:
   
-    if keys[pygame.K_RIGHT]:
+    if keys[pygame.K_RIGHT] and x < 390:
       x += 10
       direction = forward1
 
-    if keys[pygame.K_LEFT] and x > vel:
+    if keys[pygame.K_LEFT] and x > -60:
       x -= 10
       direction = backward1
-    if keys[pygame.K_UP]:
+    if keys[pygame.K_UP] and y > -60:
        y -= 10
        direction = forward1
-    if keys[pygame.K_DOWN]:
+    if keys[pygame.K_DOWN] and y < 320:
        y += 10
        direction = backward1
      
